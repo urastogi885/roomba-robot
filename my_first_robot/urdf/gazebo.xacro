@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<robot name="my_first_robot" xmlns:xacro="https://www.ros.org/wiki/xacro" >
+  <!-- Define color for robot parts -->
+  <gazebo reference="link_chassis">
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <gazebo reference="link_left_wheel">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="link_right_wheel">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="sensor_laser">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <!-- 
+    Add control to the robot via a plugin to the xacro file. Add a differential drive plugin to the robot.
+  -->
+  <gazebo>
+    <plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>20</updateRate>
+      <leftJoint>joint_left_wheel</leftJoint>
+      <rightJoint>joint_right_wheel</rightJoint>
+      <wheelSeparation>0.4</wheelSeparation>
+      <wheelDiameter>0.2</wheelDiameter>
+      <torque>0.1</torque>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>link_chassis</robotBaseFrame>
+    </plugin>
+  </gazebo>
+</robot>
