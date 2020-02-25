@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- rviz launch file: to visualize the robot we have just defined -->
+<launch>
+
+  <!-- 
+  	This line was before:
+	<param name="my_first_robot" command="cat '$(find my_first_robot)/urdf/my_first_robot.xacro'" />
+
+	Here we are using the cat command to read the contents of my_first_robot.xacro file into my_first_robot parameter. However, to use the features of the xacro file we need to parse and execute the xacro file and to achieve that we will modify the above line to:
+  -->
+  <param name="my_first_robot" command="$(find xacro)/xacro.py  '$(find my_first_robot)/urdf/m2wr.xacro'"/>
+
+  <!-- send fake joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="False"/>
+  </node>
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+  <!-- Show in Rviz   -->
+  <node name="rviz" pkg="rviz" type="rviz" />
+
+</launch>
