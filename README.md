@@ -37,7 +37,7 @@ gazebo
 - Run the following commands to clone and build this project:
 ```shell script
 git clone --recursive https://github.com/urastogi885/obstacle_avoidance_simulation
-cd robo_behaviors/
+cd robot_behaviors/
 chmod +x reading_laser.py
 chmod +x obstacle_avoidance.py
 chmod +x wall_following.py
