@@ -1,7 +1,7 @@
 dist: xenial
 sudo: required
 cache: apt
-language: generic
+language: python
 
 # Configuration variables. All variables are global
 env:
@@ -71,12 +71,8 @@ before_script:
 # fails. Running `catkin_test_results` aggregates all the results and returns
 # non-zero when a test fails (which notifies Travis the build failed).
 script:
-  - source ~catkin_ws/devel/setup.bash
-  - cd ~/catkin_ws/src/robot_behaviors
-  - chmod +x reading_laser.py
-  - chmod +x obstacle_avoidance.py
-  - chmod +x wall_following.py
-  - cd ../../
+  - cd ~/catkin_ws/
+  - source devel/setup.bash
   - catkin_make $( [ -f $CATKIN_OPTIONS ] && cat $CATKIN_OPTIONS )
 
 notifications:
