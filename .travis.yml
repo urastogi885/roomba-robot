@@ -1,8 +1,7 @@
 dist: xenial
 sudo: required
 cache: apt
-language: python
-python: 2.7
+language: generic
 
 # Configuration variables. All variables are global
 env:
