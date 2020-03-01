@@ -72,7 +72,6 @@ before_script:
 # non-zero when a test fails (which notifies Travis the build failed).
 script:
   - cd ~/catkin_ws/
-  - source devel/setup.bash
   - catkin_make $( [ -f $CATKIN_OPTIONS ] && cat $CATKIN_OPTIONS )
 
 notifications:
