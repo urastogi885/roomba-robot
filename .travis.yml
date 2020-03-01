@@ -2,6 +2,7 @@ dist: xenial
 sudo: required
 cache: apt
 language: python
+python: 2.7
 
 # Configuration variables. All variables are global
 env:
@@ -10,7 +11,6 @@ env:
     - ROS_CI_DESKTOP="`lsb_release -cs`"  # e.g. [precise|trusty|...]
     - CI_SOURCE_PATH=$(pwd)
     - ROSINSTALL_FILE=$CI_SOURCE_PATH/dependencies.rosinstall
-    - CATKIN_OPTIONS=$CI_SOURCE_PATH/catkin.options
     - ROS_PARALLEL_JOBS='-j8 -l6'
 
 ################################################################################
@@ -72,7 +72,7 @@ before_script:
 # non-zero when a test fails (which notifies Travis the build failed).
 script:
   - cd ~/catkin_ws/
-  - catkin_make $( [ -f $CATKIN_OPTIONS ] && cat $CATKIN_OPTIONS )
+  - catkin_make
 
 notifications:
   email: false
